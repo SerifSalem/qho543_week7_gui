@@ -11,6 +11,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
+fun MultiMessage(message: String, nTimes: Int, colour: Color = Color.Black) {
+    Column {
+        for(i in 1..nTimes) {
+            Text(message, color=colour)
+        }
+    }
+}
+
+@Composable
 fun TwoTextsStyled() {
     Column {
         Text("Hello World!", color = Color.Red, fontStyle= FontStyle.Italic, fontFamily=FontFamily.Serif)
@@ -39,6 +48,7 @@ fun App() {
             HelloWorld()
             TwoTexts()
             TwoTextsStyled()
+            MultiMessage("Hello QHO543!", 3, Color.Blue)
         }
     }
 }
