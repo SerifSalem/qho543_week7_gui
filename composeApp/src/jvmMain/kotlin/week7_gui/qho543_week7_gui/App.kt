@@ -4,6 +4,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+
+@Composable
+fun TwoTextsStyled() {
+    Column {
+        Text("Hello World!", color = Color.Red, fontStyle= FontStyle.Italic, fontFamily=FontFamily.Serif)
+        Text("Hello World!", fontSize=24.sp)
+        Text("Welcome to Compose Multiplatform Development", fontWeight= FontWeight.Bold)
+    }
+}
 
 @Composable
 fun TwoTexts() {
@@ -24,6 +38,7 @@ fun App() {
         Column {
             HelloWorld()
             TwoTexts()
+            TwoTextsStyled()
         }
     }
 }
