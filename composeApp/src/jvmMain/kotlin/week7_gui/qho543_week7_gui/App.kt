@@ -1,6 +1,7 @@
 package week7_gui.qho543_week7_gui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -12,6 +13,21 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+
+@Composable
+fun ButtonExample() {
+    val clickedState = remember { mutableStateOf("Not Clicked!") }
+
+    Column {
+        Button (
+            onClick = { clickedState.value="Clicked!" }
+        ){
+            // Text as a child composable of the button
+            Text("Click me!")
+        }
+        Text(clickedState.value, fontWeight = FontWeight.Bold)
+    }
+}
 
 @Composable
 fun GreetingBox() {
@@ -59,11 +75,12 @@ fun HelloWorld() {
 fun App() {
     MaterialTheme {
         Column {
-            HelloWorld()
-            TwoTexts()
-            TwoTextsStyled()
-            MultiMessage("Hello QHO543!", 3, Color.Blue)
-            GreetingBox()
+            //HelloWorld()
+            //TwoTexts()
+            //TwoTextsStyled()
+            //MultiMessage("Hello QHO543!", 3, Color.Blue)
+            //GreetingBox()
+            ButtonExample()
         }
     }
 }
