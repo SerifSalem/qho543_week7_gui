@@ -15,6 +15,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
+fun CounterBox() {
+    // State to hold the current counter value, initialised to 0
+    val counterState = remember { mutableStateOf(0) }
+
+    Column {
+        Text(
+            text = "Counter: ${counterState.value}",
+            color = Color.Red,
+            fontSize = 32.sp
+        )
+        Button(
+            onClick = { counterState.value++ }
+        ) {
+            Text("Increase")
+        }
+    }
+}
+
+@Composable
 fun ButtonExample() {
     val clickedState = remember { mutableStateOf("Not Clicked!") }
 
@@ -80,7 +99,8 @@ fun App() {
             //TwoTextsStyled()
             //MultiMessage("Hello QHO543!", 3, Color.Blue)
             //GreetingBox()
-            ButtonExample()
+            //ButtonExample()
+            CounterBox()
         }
     }
 }
