@@ -22,7 +22,6 @@ fun HelloWorld() {
 fun App() {
     MaterialTheme {
         Column {
-            HelloWorld()
             TwoTexts()
         }
     }
