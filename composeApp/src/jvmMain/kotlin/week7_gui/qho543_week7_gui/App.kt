@@ -13,23 +13,17 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+
 @Composable
-fun GreetingBox() {
-    val nameState = remember { mutableStateOf("") }
-    Column {
-        TextField(value = nameState.value, onValueChange= {
-            nameState.value = it
-        })
-        Text("Hello ${nameState.value}!")
-    }
+fun HelloWorld() {
+    Text("Hello World from the Custom Composable!")
 }
 
 @Composable
-fun MultiMessage(message: String, nTimes: Int, colour: Color = Color.Black) {
+fun TwoTexts() {
     Column {
-        for(i in 1..nTimes) {
-            Text(message, color=colour)
-        }
+        Text("Hello World! ")
+        Text("Welcome to Compose Multiplatform Development")
     }
 }
 
@@ -43,26 +37,29 @@ fun TwoTextsStyled() {
 }
 
 @Composable
-fun TwoTexts() {
+fun MultiMessage(message: String, nTimes: Int, colour: Color = Color.Black) {
     Column {
-        Text("Hello World! ")
-        Text("Welcome to Compose Multiplatform Development")
+        for(i in 1..nTimes) {
+            Text(message, color=colour)
+        }
     }
 }
 
 @Composable
-fun HelloWorld() {
-    Text("Hello World from the Custom Composable!")
+fun GreetingBox() {
+    val nameState = remember { mutableStateOf("") }
+    Column {
+        TextField(value = nameState.value, onValueChange= {
+            nameState.value = it
+        })
+        Text("Hello ${nameState.value}!")
+    }
 }
 
 @Composable
 fun App() {
     MaterialTheme {
         Column {
-            HelloWorld()
-            TwoTexts()
-            TwoTextsStyled()
-            MultiMessage("Hello QHO543!", 3, Color.Blue)
             GreetingBox()
         }
     }
