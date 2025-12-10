@@ -46,11 +46,12 @@ fun LoginMockup() {
 }
 
 @Composable
-fun App() {
-    MaterialTheme {
+fun App() {MaterialTheme {
         Column {
             LoginMockup()
         }
     }
 }
+
+
 
