@@ -15,18 +15,33 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FeetToMetresConverter() {
-    // Store the input as a String
-    val feetState = remember { mutableStateOf("") }
-
-    // Try to convert to Double; if it fails, use 0.0
-    val feetValue = feetState.value.toDoubleOrNull() ?: 0.0
-    val metres = feetValue * 0.305
+fun LoginMockup() {
+    val usernameState = remember { mutableStateOf("") }
+    val passwordState = remember { mutableStateOf("") }
+    val loggedInState = remember { mutableStateOf(false) }
+    val errorMessageState = remember { mutableStateOf("") }
 
     Column {
-        TextField(value = feetState.value, onValueChange = { feetState.value = it },
-            label = { Text("Enter feet:") })
-        Text("Metres: $metres")
+        if (!loggedInState.value) {
+            // Login form
+            TextField(value = usernameState.value, onValueChange = { usernameState.value = it },
+                label = { Text("Username") }, singleLine = true)
+            TextField(value = passwordState.value, onValueChange = { passwordState.value = it },
+                label = { Text("Password") }, singleLine = true)
+            Button(onClick = {
+                if (usernameState.value == "alex" && passwordState.value == "password") {
+                    loggedInState.value = true
+                    errorMessageState.value = ""
+                } else {errorMessageState.value = "Incorrect username or password"}
+            }) {Text("Login")}
+
+            if (errorMessageState.value.isNotEmpty()) {Text(errorMessageState.value, color = Color.Red)}
+        } else {Text("Logged in as ${usernameState.value}")
+            Button(onClick = {
+                loggedInState.value = false
+                passwordState.value = ""
+            }) {Text("Logout")}
+        }
     }
 }
 
@@ -34,7 +49,7 @@ fun FeetToMetresConverter() {
 fun App() {
     MaterialTheme {
         Column {
-            FeetToMetresConverter()
+            LoginMockup()
         }
     }
 }
