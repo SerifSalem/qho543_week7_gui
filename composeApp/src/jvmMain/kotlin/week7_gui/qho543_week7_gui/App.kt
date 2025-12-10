@@ -15,92 +15,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CounterBox() {
-    // State to hold the current counter value, initialised to 0
-    val counterState = remember { mutableStateOf(0) }
+fun FeetToMetresConverter() {
+    // Store the input as a String
+    val feetState = remember { mutableStateOf("") }
+
+    // Try to convert to Double; if it fails, use 0.0
+    val feetValue = feetState.value.toDoubleOrNull() ?: 0.0
+    val metres = feetValue * 0.305
 
     Column {
-        Text(
-            text = "Counter: ${counterState.value}",
-            color = Color.Red,
-            fontSize = 32.sp
-        )
-        Button(
-            onClick = { counterState.value++ }
-        ) {
-            Text("Increase")
-        }
+        TextField(value = feetState.value, onValueChange = { feetState.value = it },
+            label = { Text("Enter feet:") })
+        Text("Metres: $metres")
     }
-}
-
-@Composable
-fun ButtonExample() {
-    val clickedState = remember { mutableStateOf("Not Clicked!") }
-
-    Column {
-        Button (
-            onClick = { clickedState.value="Clicked!" }
-        ){
-            // Text as a child composable of the button
-            Text("Click me!")
-        }
-        Text(clickedState.value, fontWeight = FontWeight.Bold)
-    }
-}
-
-@Composable
-fun GreetingBox() {
-    val nameState = remember { mutableStateOf("") }
-    Column {
-        TextField(value = nameState.value, onValueChange= {
-            nameState.value = it
-        })
-        Text("Hello ${nameState.value}!")
-    }
-}
-
-@Composable
-fun MultiMessage(message: String, nTimes: Int, colour: Color = Color.Black) {
-    Column {
-        for(i in 1..nTimes) {
-            Text(message, color=colour)
-        }
-    }
-}
-
-@Composable
-fun TwoTextsStyled() {
-    Column {
-        Text("Hello World!", color = Color.Red, fontStyle= FontStyle.Italic, fontFamily=FontFamily.Serif)
-        Text("Hello World!", fontSize=24.sp)
-        Text("Welcome to Compose Multiplatform Development", fontWeight= FontWeight.Bold)
-    }
-}
-
-@Composable
-fun TwoTexts() {
-    Column {
-        Text("Hello World! ")
-        Text("Welcome to Compose Multiplatform Development")
-    }
-}
-
-@Composable
-fun HelloWorld() {
-    Text("Hello World from the Custom Composable!")
 }
 
 @Composable
 fun App() {
     MaterialTheme {
         Column {
-            //HelloWorld()
-            //TwoTexts()
-            //TwoTextsStyled()
-            //MultiMessage("Hello QHO543!", 3, Color.Blue)
-            //GreetingBox()
-            //ButtonExample()
-            CounterBox()
+            FeetToMetresConverter()
         }
     }
 }
+
