@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun HelloWorld() {
-    Text("Hello World fron the Custom Composable!")
+    Text("Hello World from the Custom Composable!")
 }
 
 @Composable
